@@ -1,6 +1,6 @@
 (function(){
 	'use strict';	
-		var DemoCtrl = function($scope, $ionicActionSheet, $ionicBackdrop, $timeout,$ionicPopup, $ionicLoading,) {
+		var DemoCtrl = function($scope, $ionicActionSheet, $ionicBackdrop, $timeout,$ionicPopup, $ionicLoading, $ionicPopover, $ionicModal) {
 			$scope.items = [{
 				title: 'test',
 				description: 'test'
@@ -100,21 +100,62 @@
 					console.log("The loading indicator is now hidden");
 				});
 			};
+			
+			$ionicPopover.fromTemplateUrl('templates/my-popover.html', {
+				scope: $scope
+			}).then(function(popover) {
+				$scope.popover = popover;
+			});
+		
+		
+			$scope.openPopover = function($event) {
+				$scope.popover.show($event);
+			};
+			$scope.closePopover = function() {
+				$scope.popover.hide();
+			};
+			//Cleanup the popover when we're done with it!
+			$scope.$on('$destroy', function() {
+				$scope.popover.remove();
+			});
+			// Execute action on hidden popover
+			$scope.$on('popover.hidden', function() {
+				// Execute action
+			});
+			// Execute action on remove popover
+			$scope.$on('popover.removed', function() {
+				// Execute action
+			});
 		}
-		var app = angular.module('myApp', ['ionic'])
-app.constant('$ionicLoadingConfig', {
-  template: 'Default Loading Template...'
-});
-app.controller('AppCtrl', function($scope, $ionicLoading) {
-  $scope.showLoading = function() {
-    //options default to values in $ionicLoadingConfig
-    $ionicLoading.show().then(function(){
-       console.log("The loading indicator is now displayed");
-    });
+		angular.module('testApp', ['ionic'])
+.controller('MyController', function($scope, $ionicModal) {
+  $ionicModal.fromTemplateUrl('my-modal.html', {
+    scope: $scope,
+    animation: 'slide-in-up'
+  }).then(function(modal) {
+    $scope.modal = modal;
+  });
+  $scope.openModal = function() {
+    $scope.modal.show();
   };
+  $scope.closeModal = function() {
+    $scope.modal.hide();
+  };
+  // Cleanup the modal when we're done with it!
+  $scope.$on('$destroy', function() {
+    $scope.modal.remove();
+  });
+  // Execute action on hide modal
+  $scope.$on('modal.hidden', function() {
+    // Execute action
+  });
+  // Execute action on remove modal
+  $scope.$on('modal.removed', function() {
+    // Execute action
+  });
 });
 
-		DemoCtrl.$inject = ['$scope', '$ionicActionSheet', '$ionicBackdrop', '$timeout','$ionicPopup', '$ionicLoading'];
+		DemoCtrl.$inject = ['$scope', '$ionicActionSheet', '$ionicBackdrop', '$timeout','$ionicPopup', '$ionicLoading', '$ionicPopover', '$ionicModal'];
 		angular
 			.module('starter')
 			.controller('MainCtrl',DemoCtrl);
