@@ -1,6 +1,6 @@
 (function(){
 	'use strict';	
-		var DemoCtrl = function($scope, $ionicActionSheet, $ionicBackdrop, $timeout,$ionicPopup, $ionicLoading, $ionicPopover, $ionicModal) {
+		var DemoCtrl = function($scope, $ionicActionSheet, $ionicBackdrop, $timeout,$ionicPopup, $ionicLoading, $ionicPopover, $ionicModal ) {
 			$scope.items = [{
 				title: 'test',
 				description: 'test'
@@ -126,36 +126,36 @@
 			$scope.$on('popover.removed', function() {
 				// Execute action
 			});
-		}
-		angular.module('testApp', ['ionic'])
-.controller('MyController', function($scope, $ionicModal) {
-  $ionicModal.fromTemplateUrl('my-modal.html', {
-    scope: $scope,
-    animation: 'slide-in-up'
-  }).then(function(modal) {
-    $scope.modal = modal;
-  });
-  $scope.openModal = function() {
-    $scope.modal.show();
-  };
-  $scope.closeModal = function() {
-    $scope.modal.hide();
-  };
-  // Cleanup the modal when we're done with it!
-  $scope.$on('$destroy', function() {
-    $scope.modal.remove();
-  });
-  // Execute action on hide modal
-  $scope.$on('modal.hidden', function() {
-    // Execute action
-  });
-  // Execute action on remove modal
-  $scope.$on('modal.removed', function() {
-    // Execute action
-  });
-});
 
-		DemoCtrl.$inject = ['$scope', '$ionicActionSheet', '$ionicBackdrop', '$timeout','$ionicPopup', '$ionicLoading', '$ionicPopover', '$ionicModal'];
+			$ionicModal.fromTemplateUrl('templates/my-modal.html', {
+				scope: $scope,
+				animation: 'slide-in-up'
+			  }).then(function(modal) {
+				$scope.modal = modal;
+			  });
+
+			  $scope.openModal = function() {
+				$scope.modal.show();
+			  };
+			  $scope.closeModal = function() {
+				$scope.modal.hide();
+			  };
+			  // Cleanup the modal when we're done with it!
+			  $scope.$on('$destroy', function() {
+				$scope.modal.remove();
+			  });
+			  // Execute action on hide modal
+			  $scope.$on('modal.hidden', function() {
+				// Execute action
+			  });
+			  // Execute action on remove modal
+			  $scope.$on('modal.removed', function() {
+				// Execute action
+			  });
+			}
+		
+
+		DemoCtrl.$inject = ['$scope', '$ionicActionSheet', '$ionicBackdrop', '$timeout','$ionicPopup', '$ionicLoading', '$ionicPopover', '$ionicModal','$ionicHistory'];
 		angular
 			.module('starter')
 			.controller('MainCtrl',DemoCtrl);
