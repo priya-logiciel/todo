@@ -41,18 +41,24 @@
       <ion-header-bar class="bar-calm">
         <div class="title">Header</div>
       </ion-header-bar>
-      <ion-content>
-         <ion-card ng-if="dataToShow.firstname">
-          Firstname: {{dataToshow.firstname}}
+      <ion-content style="padding-top:50px">
+         <ion-card ng-show="dataToShow.SecondName">
+          SecondName: {{dataToShow.SecondName}}
          </ion-card>
-         <button ng-click="removedata()" ng-if="dataToShow.firstname">Remove</button>
-           
-         <ion-List >
-        <ion-item ng-repeat="item in list" >
-        {{item.firstname}}
+         <button ng-click="removedata()" ng-if="dataToShow.SecondName">Remove</button>
+            <ion-list>
+        <ion-list ng-repeat="item in list" >
+
+      <ion-item>
+        {{item.SecondName}}
            <button ng-click="showData(item)">Show</button>
-           </ion-item>
-        </ion-list>
+           <button ng-click="delete(item)">delete</button> 
+          </ion-list>  
+        </ion-item>
+            SecondName : <input ng-model="dataToAdd.SecondName" />
+            <button ng-click="addToList()">Add</button>
+            
+          </ion-item>
       </ion-content>
     </ion-pane>
 <ion-content class="has-footer">

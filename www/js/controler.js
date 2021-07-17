@@ -2,24 +2,39 @@
 	'use strict';	
 		var DemoCtrl = function($scope, $ionicActionSheet, $ionicBackdrop, $timeout,$ionicPopup, $ionicLoading, $ionicPopover, $ionicModal ) {
 			$scope.dataToShow = {};
+			 
+			$scope.dataToAdd = {
+				SecondName: ''
+			};
 
-			$scope.list=[{
-				  firstname: 'Priyanka'
+			$scope.list = [{
+
+				  SecondName: 'Suparnya'
 			},{
-				firstname: 'Vanshu'
+				SecondName: 'Saparsh'
 			}]
-			 $scope.showData= function(item){
-				 $scope.dataToShow=item
-			 }
-
 		
-		$scope.removedata = function() {
-			$scope.dataToShow ={};
+		          $scope.removedata = function() {
+			        $scope.dataToShow ={};
 		}
+		$scope.showData= function(item){
+
+			$scope.dataToShow  =item;
+		}
+              $scope.addToList = function() {
+		    $scope.list.push({
+			SecondName: $scope.dataToAdd.SecondName
+		})
+		    $scope.dataToAdd.SecondName= '';
+			console.log($scope.dataToAdd)
+		  
+	    }
+		
 	}		
 		DemoCtrl.$inject = ['$scope', '$ionicActionSheet', '$ionicBackdrop', '$timeout','$ionicPopup', '$ionicLoading', '$ionicPopover', '$ionicModal','$ionicHistory'];
 		angular
 			.module('starter')
 			.controller('MainCtrl',DemoCtrl);
 	})(); 
-	
+	   
+
