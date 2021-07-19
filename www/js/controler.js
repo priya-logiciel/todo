@@ -29,6 +29,13 @@
 			console.log($scope.dataToAdd)
 		  
 	    }
+		// delete function this remove the selected table row
+		$scope.deleteRow= function (i) {
+			$scope.list.splice(i, 1);
+			SecondName: $scope.dataToAdd.SecondName
+		};
+	 
+		
 		
 	}		
 		DemoCtrl.$inject = ['$scope', '$ionicActionSheet', '$ionicBackdrop', '$timeout','$ionicPopup', '$ionicLoading', '$ionicPopover', '$ionicModal','$ionicHistory'];

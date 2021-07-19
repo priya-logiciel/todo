@@ -52,7 +52,7 @@
       <ion-item>
         {{item.SecondName}}
            <button ng-click="showData(item)">Show</button>
-           <button ng-click="delete(item)">delete</button> 
+           <button class='btn btn-danger' ng-click="deleteRow($index)">Delete</button> 
           </ion-list>  
         </ion-item>
             SecondName : <input ng-model="dataToAdd.SecondName" />
