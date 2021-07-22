@@ -1,6 +1,6 @@
 (function(){
 	'use strict';	
-		var DemoCtrl = function($scope, $ionicActionSheet, $ionicBackdrop, $timeout,$ionicPopup, $ionicLoading, $ionicPopover, $ionicModal ) {
+		var DemoCtrl = function($scope, $ionicActionSheet, $ionicBackdrop, $timeout,$ionicPopup, $ionicLoading, $ionicPopover, $ionicModal,$ionicHistory,$location,hexafy,counts, apiService)  {
 			$scope.dataToShow = {};
 			 
 			$scope.dataToAdd = {
@@ -28,24 +28,39 @@
 				'2222-22-22'
 			];
 			 //using user defined filter (show value divided by 3)
-			 $scope.studentlist ={
+			 $scope.customerlist =[
 				 {name:'prince',value:1},	   
-				 {name:'prince',value:2},	   
-				 {name:'prince',value:3},	   
-				 {name:'prince',value:4},	   
-				 {name:'prince',value:5},	   
-				 {name:'prince',value:6},	   
-				 {name:'prince',value:7},	   
-				 {name:'prince',value:8},	   
-				 {name:'prince',value:9},	   
-				 {name:'prince',value:10},	   
-				 {name:'prince',value:11},	   
+				 {name:'priyanka',value:2},	   
+				 {name:'priya',value:3},	   
+				 {name:'varsha',value:4},	   
+				 {name:'riya',value:5},	   
+				 {name:'pihu',value:6},	   
+				 {name:'pinka',value:7},	   
+				 {name:'depali',value:8},	   
+				 {name:'shabu',value:9},	   
+				 {name:'pankaj',value:10},	   
+				 {name:'nikhil',value:11},	   
 			 ]
 		    $scope.removedata = function() {
 				$scope.dataToShow ={};
 			}
+			   //Hexafy value
+			   $scope.hex = hexafy.myFunc(255);
 
-			$scope.showData= function(item){
+			   //array value
+			   $scope.counts = [255, 251, 200];
+
+			   $scope.data = [];
+            apiService.getDataFromApi().then(function(response){
+                if(response) {
+                    $scope.data = response;
+                    console.log($scope.data)
+                }
+            }, function(err){
+                console.log(err)
+            })
+					
+               $scope.showData= function(item){
 				$scope.dataToShow  =item;
 			}
 			
@@ -61,13 +76,13 @@
 			$scope.deleteRow= function (i) {
 				$scope.list.splice(i, 1);
 			};
-					
+			  
+			
+			
 		
-						
+	}
 
-}
-
-		DemoCtrl.$inject = ['$scope', '$ionicActionSheet', '$ionicBackdrop', '$timeout','$ionicPopup', '$ionicLoading', '$ionicPopover', '$ionicModal','$ionicHistory'];
+		DemoCtrl.$inject = ['$scope', '$ionicActionSheet', '$ionicBackdrop', '$timeout','$ionicPopup', '$ionicLoading', '$ionicPopover', '$ionicModal','$ionicHistory','$location','hexafy','counts', 'apiService']
 		angular
 			.module('starter')
 			.controller('MainCtrl',DemoCtrl);

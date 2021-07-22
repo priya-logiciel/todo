@@ -35,56 +35,57 @@
     <script src="js/app.js"></script>
     <script src="js/controler.js"></script>
     <script src="js/filter.js"></script>
+    <script src="js/service.js"></script>
   </head>
   <body ng-app="starter">
-    
-    <ion-pane ng-controlLer="MainCtrl">
+    <ion-pane ng-controller="MainCtrl">
       <ion-header-bar class="bar-calm">
         <div class="title">Header</div>
       </ion-header-bar>
       <ion-content style="padding-top:50px">
-          <div>{{'priyanka yadav' |uppercase}} </div>
-      <ion-card ng-show="dataToShow.SecondName">
-        SecondName: {{dataToShow.SecondName| uppercase}}
-      </ion-card>
-      <button ng-click="removedata()" ng-if="dataToShow.SecondName">Remove</button>
-          <ion-list ng-repeat="item in list" >
-            <ion-item>
-              {{item.SecondName|uppercase}}
-              <button ng-click="showData(item)">Show</button>
-              <button class='btn btn-danger' ng-click="deleteRow($index)">Delete</button> 
-              </ion-item>
-              </ion-list>
-                  SecondName : <input ng-model="dataToAdd.SecondName" />
-                  <button ng-click="addToList()">Add</button>
+          <div>
+            {{'priyanka yadav' |uppercase}} 
+          </div>
+        <ion-card ng-show="dataToShow.SecondName">
+          SecondName: {{dataToShow.SecondName| uppercase}}
+        </ion-card>
+          <button ng-click="removedata()" ng-if="dataToShow.SecondName">Remove</button>
+        <ion-list ng-repeat="item in list" >
+          <ion-item>
+            {{item.SecondName|uppercase}}
+             <button ng-click="showData(item)">Show</button>
+             <button class='btn btn-danger' ng-click="deleteRow($index)">Delete</button> 
+          </ion-item>
+        </ion-list>
+          SecondName : <input ng-model="dataToAdd.SecondName" />
+          <button ng-click="addToList()">Add</button>
 
-								<!--using Filter for replace letter-->
-								  <div>
-										<p>Type a letter in the input filed:</p>
-									</div>
-
-                  <!--using Filter for replace letter-->
-                  <div>
-										 <ul>
-											   <li ng-repeat="x in names">
-													  {{x | myformat: '@@'}}
-												 </li>
-										 </ul>
-                  </div>
-									 
-									<!---using filter to show value divied by 3 onlu-->
-									<div>
-										 <ul>
-											 <li ng-repeat="x in customerslist |myformat1 : 'checked'">
-												  {{x.name}}
-											 </li>
-										 </ul>
-									</div>
-									 		
-
-									  
-                  
-           </ion-content>
+          <!--using Filter for replace letter-->
+            <div>
+              <p>Type a letter in the input filed:</p>
+            </div>
+          <!--using Filter for replace letter-->
+            <div>
+                <ul>
+                    <li ng-repeat="x in names">
+                      {{x | myformat: '@@'}}
+                    </li>
+                </ul>
+            </div>
+          <!---using filter to show value divied by 3only-->
+          <div>
+              <ul>
+                <li ng-repeat="x in customerlist |myFormat1 : 'checked'">
+                  {{x.name}}
+                </li>
+              </ul>
+          </div>
+        <!---using service to show location-->
+              <h3>{{myUrl}}</h3>
+        <!---using service to show service user difined-->
+        <h1>{{hex}}</h1>
+        <!---using service to show array difined-->
+               </ion-content>
                </ion-pane>
                 <ion-content class="has-footer">
                 Some content!
@@ -96,8 +97,8 @@
                     <h1 class="title">Title!</h1>
                       <div class="buttons" ng-click="doSomething()">
                         <button class="button">Right Button</button>
-                </div>
-                </ion-footer-bar>
+                    </div>
+                    </ion-footer-bar>
 
 </body>
 </html>
