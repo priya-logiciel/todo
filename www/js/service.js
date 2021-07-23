@@ -37,4 +37,58 @@ angular
 		});
 		return promise;
 	}
+
+	this.postDataFromApi = function (Y){
+		var deferredAbort = $q.defer();
+		var request = $http({
+			url: 'https://jsonplaceholder.typicode.com/posts',
+			timeout: deferredAbort.promise,
+			method: "post",
+			title: 'TWO',
+			body: 'bar',
+			userId: 1,
+		}) 
+		var promise = request.then(
+		function (response) {
+				return response.data;
+		},
+		function () {
+			return $q.reject("Something went wrong");
+		}
+		);
+		promise.abort = function () {
+			deferredAbort.resolve();
+		};
+		promise.finally(function () {
+			promise.abort = angular.noop;
+			deferredAbort = request = promise = null;
+		});
+		return promise;
+	}
+	
+	this.deleteDataFromApi = function (x){
+		var deferredAbort = $q.defer();
+		var request = $http({
+			url: 'https://jsonplaceholder.typicode.com/posts',
+			timeout: deferredAbort.promise,
+			method: "delete",
+		}) 
+		var promise = request.then(
+		function (response) {
+				return response.data;
+		},
+		function () {
+			return $q.reject("Something went wrong");
+		}
+		);
+		promise.abort = function () {
+			deferredAbort.resolve();
+		};
+		promise.finally(function () {
+			promise.abort = angular.noop;
+			deferredAbort = request = promise = null;
+		});
+		return promise;
+	}
 })
+

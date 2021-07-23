@@ -49,7 +49,7 @@
 
 			   //array value
 			   $scope.counts = [255, 251, 200];
-
+               //get data
 			   $scope.data = [];
             apiService.getDataFromApi().then(function(response){
                 if(response) {
@@ -59,11 +59,31 @@
             }, function(err){
                 console.log(err)
             })
-					
+			  //post data
+				$scope.data = [];
+				apiService.postDataFromApi().then(function(response){
+					if(response) {
+						$scope.data = response;
+					console.log(response)	
+					}
+				}, function(err){
+					console.log(err)
+				})
+				//delete data
+				$scope.data = [];
+				apiService.postDataFromApi().then(function(response){
+					if(response) {
+						$scope.data = response;
+					console.log(response)	
+					}
+				}, function(err){
+					console.log(err)
+				})
+				 // show data	
                $scope.showData= function(item){
 				$scope.dataToShow  =item;
 			}
-			
+			   //add data
             $scope.addToList = function() {
 				$scope.list.push({
 					SecondName: $scope.dataToAdd.SecondName

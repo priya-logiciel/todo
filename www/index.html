@@ -66,26 +66,41 @@
             </div>
           <!--using Filter for replace letter-->
             <div>
-                <ul>
-                    <li ng-repeat="x in names">
-                      {{x | myformat: '@@'}}
-                    </li>
-                </ul>
+              <ul>
+                 <li ng-repeat="x in names">
+                   {{x | myformat: '@@'}}
+                  </li>
+              </ul>
             </div>
           <!---using filter to show value divied by 3only-->
           <div>
-              <ul>
-                <li ng-repeat="x in customerlist |myFormat1 : 'checked'">
-                  {{x.name}}
-                </li>
+            <ul>
+              <li ng-repeat="x in customerlist |myFormat1 : 'checked'">
+                {{x.name}}
+             </li>
               </ul>
           </div>
-        <!---using service to show location-->
+          <!---using service to show location-->
               <h3>{{myUrl}}</h3>
-        <!---using service to show service user difined-->
-        <h1>{{hex}}</h1>
-        <!---using service to show array difined-->
-               </ion-content>
+              <!---using service to show service user difined-->
+                <h1>{{hex}}</h1>
+        <!---using service to show data diffiend-->
+          <ion-content style="padding-top:50px">
+            <ion-list>
+              <ion-item ng-repeat="item in data">
+                {{item.title}}
+              </ion-item>
+              </ion-list>
+          <!-- using to show post data-->
+            <div>
+              list in post
+             </div>
+               <ion-item ng-repeat="item in data">
+                  {{item.userid}}
+                  {{item.id}}
+                  {{item.Tittle}}
+               </ion-item>
+              </ion-content>
                </ion-pane>
                 <ion-content class="has-footer">
                 Some content!
