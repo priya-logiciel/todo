@@ -1,17 +1,16 @@
 angular
   .module('starter')
-  .service('hexafy', function() {
+.service('hexafy', function() {
     this.myFunc = function (x) {
         return x.toString();
     }
 })
-           
-   .service('counts', function() {
+.service('counts', function() {
         this.myFunc = function (x) {
             return x.toString();
         }
     })
-    //Array Value
+    //get  data
 .service('apiService',function($http, $q){
 	this.getDataFromApi = function (x){
 		var deferredAbort = $q.defer();
@@ -37,16 +36,16 @@ angular
 		});
 		return promise;
 	}
-
-	this.postDataFromApi = function (Y){
+    //post data
+	this.postDataFromApi = function (title,body,id){
 		var deferredAbort = $q.defer();
 		var request = $http({
+			method: "post",
+			title: title,
+			body: body,
+			id: 1,
 			url: 'https://jsonplaceholder.typicode.com/posts',
 			timeout: deferredAbort.promise,
-			method: "post",
-			title: 'TWO',
-			body: 'bar',
-			userId: 1,
 		}) 
 		var promise = request.then(
 		function (response) {
@@ -65,9 +64,9 @@ angular
 		});
 		return promise;
 	}
-	
-	this.deleteDataFromApi = function (x){
-		var deferredAbort = $q.defer();
+	   //deiete data
+		this.deleteDataFromApi = function (x){
+	    var deferredAbort = $q.defer();
 		var request = $http({
 			url: 'https://jsonplaceholder.typicode.com/posts',
 			timeout: deferredAbort.promise,

@@ -1,8 +1,7 @@
 (function(){
 	'use strict';	
-		var DemoCtrl = function($scope, $ionicActionSheet, $ionicBackdrop, $timeout,$ionicPopup, $ionicLoading, $ionicPopover, $ionicModal,$ionicHistory,$location,hexafy,counts, apiService)  {
-			$scope.dataToShow = {};
-			 
+		var DemoCtrl = function($scope,hexafy,apiService)  {
+			
 			$scope.dataToAdd = {
 				SecondName: ''
 			};
@@ -44,42 +43,33 @@
 		    $scope.removedata = function() {
 				$scope.dataToShow ={};
 			}
-			   //Hexafy value
-			   $scope.hex = hexafy.myFunc(255);
+			//Hexafy value
+			$scope.hex = hexafy.myFunc(255);
 
-			   //array value
-			   $scope.counts = [255, 251, 200];
-               //get data
-			   $scope.data = [];
+			//array value
+			$scope.counts = [255, 251, 200];
+			//get data
+			$scope.data = [];
             apiService.getDataFromApi().then(function(response){
-                if(response) {
-                    $scope.data = response;
-                    console.log($scope.data)
-                }
-            }, function(err){
+			if(response) {
+				$scope.data = response;
+				console.log($scope.data)
+			}
+		}, function(err){
                 console.log(err)
             })
-			  //post data
-				$scope.data = [];
-				apiService.postDataFromApi().then(function(response){
+			// post data
+			$scope.postDataFromApi = function(title,body,id){
+				apiService.postDataFromApi(title,body,id).then(function(response){
 					if(response) {
 						$scope.data = response;
-					console.log(response)	
+						console.log($scope.data)
 					}
-				}, function(err){
-					console.log(err)
-				})
-				//delete data
-				$scope.data = [];
-				apiService.postDataFromApi().then(function(response){
-					if(response) {
-						$scope.data = response;
-					console.log(response)	
-					}
-				}, function(err){
-					console.log(err)
-				})
-				 // show data	
+	       },function(err){
+			console.log(err)
+		})
+	}
+		// show data	
                $scope.showData= function(item){
 				$scope.dataToShow  =item;
 			}
@@ -87,7 +77,7 @@
             $scope.addToList = function() {
 				$scope.list.push({
 					SecondName: $scope.dataToAdd.SecondName
-				})
+			})
 				$scope.dataToAdd.SecondName= " ";
 				console.log($scope.dataToAdd)
 		  	}
@@ -97,15 +87,11 @@
 				$scope.list.splice(i, 1);
 			};
 			  
-			
-			
-		
 	}
-
-		DemoCtrl.$inject = ['$scope', '$ionicActionSheet', '$ionicBackdrop', '$timeout','$ionicPopup', '$ionicLoading', '$ionicPopover', '$ionicModal','$ionicHistory','$location','hexafy','counts', 'apiService']
-		angular
-			.module('starter')
-			.controller('MainCtrl',DemoCtrl);
-	})(); 
+			DemoCtrl.$inject = ['$scope', 'hexafy', 'apiService']
+			angular
+				.module('starter')
+				.controller('MainCtrl',DemoCtrl);
+})(); 
 	   
 
