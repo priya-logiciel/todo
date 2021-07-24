@@ -41,9 +41,11 @@ angular
 		var deferredAbort = $q.defer();
 		var request = $http({
 			method: "post",
-			title: title,
-			body: body,
-			id: 1,
+			data: {
+				body:body,
+				title:title,
+				userId:id
+		},
 			url: 'https://jsonplaceholder.typicode.com/posts',
 			timeout: deferredAbort.promise,
 		}) 
@@ -64,11 +66,11 @@ angular
 		});
 		return promise;
 	}
-	   //deiete data
-		this.deleteDataFromApi = function (x){
+	   //delete data
+		this.deleteDataFromApi = function (id){
 	    var deferredAbort = $q.defer();
 		var request = $http({
-			url: 'https://jsonplaceholder.typicode.com/posts',
+			url: 'https://jsonplaceholder.typicode.com/posts/'+id,
 			timeout: deferredAbort.promise,
 			method: "delete",
 		}) 

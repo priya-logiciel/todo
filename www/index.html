@@ -87,13 +87,14 @@
          <ion-list>
             <ion-item ng-repeat="item in data">
                 {{item.title}}
+                <button ng-click="deletedata(item.id,$index)">Delete</button> 
             </ion-item>
           </ion-list>
           <div>
             title : <input ng-model="title" /><br/><br/>
             body : <input ng-model="body" /><br/><br/>
             id : <input ng-model="id" /><br/><br/>
-            <input type="button" value="Send" ng-click="postdata(title,body,id)" /> <br/><br/>
+            <button  on-tap="postData2FromApi(title,body,id)">submit</button><br/><br/>
           </div>
             <p>output massage{{massage}}</p>
             <p>title: {{title}}</p>

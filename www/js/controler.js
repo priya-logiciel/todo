@@ -51,24 +51,26 @@
 			//get data
 			$scope.data = [];
             apiService.getDataFromApi().then(function(response){
-			if(response) {
-				$scope.data = response;
-				console.log($scope.data)
-			}
-		}, function(err){
-                console.log(err)
+				if(response) {
+					$scope.data = response;
+						console.log($scope.data)
+				}
+			},  function(err){
+               	 console.log(err)
             })
 			// post data
-			$scope.postDataFromApi = function(title,body,id){
-				apiService.postDataFromApi(title,body,id).then(function(response){
-					if(response) {
-						$scope.data = response;
-						console.log($scope.data)
-					}
-	       },function(err){
-			console.log(err)
-		})
-	}
+			$scope.postData2FromApi = function(title,body,id){
+			 apiService.postDataFromApi(title,body,id).then(function(response){
+				  $scope.data.push(response)
+				})	
+			}
+			  //  Delete data
+			$scope.deletedata = function (item,$index){
+				apiService.deleteDataFromApi(item).then(function(response){
+					$scope.data.splice($index)
+				})
+			}		 
+
 		// show data	
                $scope.showData= function(item){
 				$scope.dataToShow  =item;
