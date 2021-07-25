@@ -90,6 +90,36 @@ angular
 			deferredAbort = request = promise = null;
 		});
 		return promise;
-	}
-})
+	}  
+	    //put data
+		this.putDataFromApi = function (title,body,id,){
+			var deferredAbort = $q.defer();
+			var request = $http({
+				method: "put",
+				data: {
+					body:body,
+					title:title,
+					userId:id
+			},
+				url: 'https://jsonplaceholder.typicode.com/posts',
+				timeout: deferredAbort.promise,
+			})
+			var promise = request.then(
+			function (response) {
+					return response.data;
+			},
+			function () {
+				return $q.reject("Something went wrong");
+			}
+			);
+			promise.abort = function () {
+				deferredAbort.resolve();
+			};
+			promise.finally(function () {
+				promise.abort = angular.noop;
+				deferredAbort = request = promise = null;
+			});
+			return promise;
+		}
+	})
 

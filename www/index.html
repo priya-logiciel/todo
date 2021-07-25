@@ -88,8 +88,10 @@
             <ion-item ng-repeat="item in data">
                 {{item.title}}
                 <button ng-click="deletedata(item.id,$index)">Delete</button> 
+                <button ng-click="editdata(item.id,$index)">edit</button> 
             </ion-item>
           </ion-list>
+          <!--using the post data-->
           <div>
             title : <input ng-model="title" /><br/><br/>
             body : <input ng-model="body" /><br/><br/>
@@ -100,20 +102,29 @@
             <p>title: {{title}}</p>
             <p>body:{{body}}</p>
             <p>iD :{{id}}</p>
-      </ion-content>
-    </ion-pane>
-        <ion-content class="has-footer">
-            Some content!
-        </ion-content>
-        <ion-footer-bar align-title="left" class="bar-royal">
-            <div class="buttons">
-        <button class="button">Left Button</button>
-        </div>
-           <h1 class="title">Title!</h1>
-        <div class="buttons" ng-click="doSomething()">
-        <button class="button">Right Button</button>
-          </div>
-        </ion-footer-bar>
+            <!--using the broadcast,events data-->
+            <input type="button" value="Broadcast Down" ng-click="OnClick($event)" />
+            <h4>{{Message}}</h4>
+            <h4>{{Message}}</h4>
+            <h4>{{Message}}</h4>
+            <input type="button" value="Emit Up" ng-click="OnClick($event)" />
+           </div>
+           </div>
+           </div>
+            </ion-content>
+           </ion-pane>
+              <ion-content class="has-footer">
+                  Some content!
+              </ion-content>
+              <ion-footer-bar align-title="left" class="bar-royal">
+                  <div class="buttons">
+              <button class="button">Left Button</button>
+              </div>
+                  <h1 class="title">Title!</h1>
+              <div class="buttons" ng-click="doSomething()">
+              <button class="button">Right Button</button>
+                </div>
+              </ion-footer-bar>
 
 </body>
 </html>

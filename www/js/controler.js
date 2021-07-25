@@ -69,9 +69,26 @@
 				apiService.deleteDataFromApi(item).then(function(response){
 					$scope.data.splice($index)
 				})
-			}		 
-
-		// show data	
+			}	
+			  //  edit data
+			$scope.editedata = function (item,$index){
+				apiService.editDataFromApi(item).then(function(response){
+					$scope.data.replacewith($index)
+				})
+			}		 	 
+             
+			//broadcast the event down
+			$scope.OnClick = function (evt) {
+			}
+			//handle SendDown event
+			$scope.$on("SendDown", function (evt, data) {
+				$scope.Message = "Inside SendDown handler of MyController1 : " + data;
+			});
+			 //handle SendUp event
+			 $scope.$on("SendUp", function (evt,data) {
+				$scope.Message = "Inside SendUp handler of MyController1 : " + data;
+			});
+	       // show data	
                $scope.showData= function(item){
 				$scope.dataToShow  =item;
 			}
