@@ -39,7 +39,47 @@
 				 {name:'shabu',value:9},	   
 				 {name:'pankaj',value:10},	   
 				 {name:'nikhil',value:11},	   
-			 ]
+					{  
+						firstname: 'nikhil',
+						lastname: 'singh',
+							age: '25',
+						gender:'male'
+					},
+					{
+						firstname: 'varsha',
+						lastname: 'pandy',
+						age: '22',
+						gender: 'female'
+				    },
+					{  
+						firstname: 'prince',
+						lastname: 'yadav',
+						age: '24',
+						gender:'male'
+					},
+					{
+						firstname: 'priyanka',
+						lastname: 'yadav',
+						age: '23',
+						gender: 'female'
+					},
+				]
+				$scope.dataToshow={
+					firstname:'nikhil',
+					lastname:'singh',
+					age:'25',
+					gender:'male'
+				};
+				$scope.showdata = function(item) {
+					$scope.dataToShow.firstname
+					$scope.dataToShow.lastname
+					$scope.dataToShow.age
+					$scope.dataToShow.gender			
+			 }
+			 $scope.customerlist.pop();
+			 $scope.customerlist.forEach(function(item){
+				 console.log(item)
+			})
 		    $scope.removedata = function() {
 				$scope.dataToShow ={};
 			}
