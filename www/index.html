@@ -1,133 +1,104 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
-  <title></title>
-  
-  <link rel="manifest" href="manifest.json">
-  
-  <!-- un-comment this code to enable service worker
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+​
+    <link rel="manifest" href="manifest.json">
+​
+    <!-- un-comment this code to enable service worker
     <script>
       if ('serviceWorker' in navigator) {
         navigator.serviceWorker.register('service-worker.js')
-        .then(() => console.log('service worker installed'))
-        .catch(err => console.log('Error', err));
+          .then(() => console.log('service worker installed'))
+          .catch(err => console.log('Error', err));
       }
     </script>-->
-    
+​
     <link href="lib/ionic/css/ionic.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
     <link href="css/pawan.css" rel="stylesheet">
-    
-    
+​
+​
     <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
-      <link href="css/ionic.app.css" rel="stylesheet">
+    <link href="css/ionic.app.css" rel="stylesheet">
     -->
-    
+​
     <!-- ionic/angularjs js -->
     <script src="lib/ionic/js/ionic.bundle.js"></script>
-    
+​
     <!-- cordova script (this will be a 404 during development) -->
     <script src="cordova.js"></script>
-    
+​
     <!-- your app's js -->
     <script src="js/app.js"></script>
-    <script src="js/controler.js"></script>
-    <script src="js/filter.js"></script>
-    <script src="js/service.js"></script>
-  </head>
-  <body ng-app="starter">
-    <ion-pane ng-controller="MainCtrl">
-  <ion-header-bar class="bar-calm">
-    <div class="title">Header</div>
-      </ion-header-bar>
-      <ion-content style="padding-top:50px">
-        <div>
-          {{'priyanka yadav' |uppercase}} 
-        </div>
-        <ion-card ng-show="dataToShow.SecondName">
-          SecondName: {{dataToShow.SecondName| uppercase}}
-        </ion-card>
-          <button ng-click="removedata()" ng-if="dataToShow.SecondName">Remove</button>
-        <ion-list ng-repeat="item in list" >
-          <ion-item>
-            {{item.SecondName|uppercase}}
-            <button ng-click="showData(item)">Show</button>
-             <button class='btn btn-danger' ng-click="deleteRow($index)">Delete</button> 
-          </ion-item>
-        </ion-list>
-          SecondName : <input ng-model="dataToAdd.SecondName" />
-          <button ng-click="addToList()">Add</button>
-        <!--using Filter for replace letter-->
-          <div>
-            <p>Type a letter in the input filed:</p>
-          </div>
-          <p>The Array.pop() method removes the last element of an array.</p>
-          <p id="demo"></p>
-
-        <!--using Filter for replace letter-->
-          <div>
-            <ul>
-              <li ng-repeat="x in names">
-                {{x | myformat: '@@'}}
-              </li>
-            </ul>
-          </div>
-        <!---using filter to show value divied by 3only-->
-          <div>
-            <ul>
-              <li ng-repeat="x in customerlist |myFormat1 : 'checked'">
-              {{x.name}}
-              </li>
-            </ul>
-          </div>
-        <!---using service to show location-->
-          <h3>{{myUrl}}</h3>
-        <!---using service to show service user difined-->
-          <h1>{{hex}}</h1>
-        <!---using service to show data diffiend-->
-         <ion-list>
-            <ion-item ng-repeat="item in data">
-                {{item.title}}
-                <button ng-click="deletedata(item.id,$index)">Delete</button> 
-                <button ng-click="editdata(item.id,$index)">edit</button> 
-            </ion-item>
-          </ion-list>
-          <!--using the post data-->
-          <div>
-            title : <input ng-model="title" /><br/><br/>
-            body : <input ng-model="body" /><br/><br/>
-            id : <input ng-model="id" /><br/><br/>
-            <button  on-tap="postData2FromApi(title,body,id)">submit</button><br/><br/>
-          </div>
-            <p>output massage{{massage}}</p>
-            <p>title: {{title}}</p>
-            <p>body:{{body}}</p>
-            <p>iD :{{id}}</p>
-            <!--using the broadcast,events data-->
-            <input type="button" value="Broadcast Down" ng-click="OnClick($event)" />
-            <h4>{{Message}}</h4>
-            <h4>{{Message}}</h4>
-            <h4>{{Message}}</h4>
-            <input type="button" value="Emit Up" ng-click="OnClick($event)" />
-           </div>
-           </div>
-           </div>
-            </ion-content>
-           </ion-pane>
-              <ion-content class="has-footer">
-                  Some content!
-              </ion-content>
-              <ion-footer-bar align-title="left" class="bar-royal">
-                  <div class="buttons">
-              <button class="button">Left Button</button>
-              </div>
-                  <h1 class="title">Title!</h1>
-              <div class="buttons" ng-click="doSomething()">
-              <button class="button">Right Button</button>
-                </div>
-              </ion-footer-bar>
-
-</body>
+    <script src="js/controller.js"></script>
+    <script src="js/filter.js"></script><!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+​
+    <link rel="manifest" href="manifest.json">
+​
+    <!-- un-comment this code to enable service worker
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('service-worker.js')
+          .then(() => console.log('service worker installed'))
+          .catch(err => console.log('Error', err));
+      }
+    </script>-->
+​
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+   
+​
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+​
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+​
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+​
+    <!-- your app's js -->
+    <script src="js/app.js"></script>
+    <script src="js/controller.js"></script>
+  <style>
+    .border_div {
+      margin: auto;
+      border: 2px solid #000;
+      width: 100%;
+      padding: 10px;
+      margin-top: 150px;
+    }
+  </style>
+  <body>
+    <div ng-app="starter" ng-controller="MainCtrl" class="border_div">
+      <div>
+        <p><input type="text" ng-model="test" /></p>
+      </div>
+      <table border="1" width="100%">
+        <tr>
+          <th>Firstname</th>
+          <th>Lastname</th>
+          <th>Age</th>
+          <th>Salary</th>
+          <th>DOB</th>
+        </tr>
+        <tr ng-repeat="x in names">
+          <td>{{x.firstName}}</td>
+          <td>{{x.lastName}}</td>
+          <td>{{x.age}}</td>
+          <td>{{x.salary}}</td>
+          <td>{{x.dob}}</td>
+        </tr>
+      </table>
+    </div>
+  </body>
 </html>
