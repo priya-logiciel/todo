@@ -69,29 +69,27 @@
     <!-- your app's js -->
     <script src="js/app.js"></script>
     <script src="js/controller.js"></script>
-  <style>
-    .border_div {
-      margin: auto;
-      border: 2px solid #000;
-      width: 100%;
-      padding: 10px;
-      margin-top: 150px;
-    }
-  </style>
+    <style>
+      table, th, td {
+        border: 1px solid black;
+      }
+      </style>
   <body>
     <div ng-app="starter" ng-controller="MainCtrl" class="border_div">
-      <div>
-        <p><input type="text" ng-model="test" /></p>
-      </div>
-      <table border="1" width="100%">
+      <input ng-model="dataToShow" />
+      <button class="myClass" on-tap="showDataInPopup()">Show Data</button>
+      <button class="myClass" on-tap="showdelete()">Delete</button>
+      <table border=1 width="100%" style="background-color:pink">
         <tr>
-          <th>Firstname</th>
-          <th>Lastname</th>
-          <th>Age</th>
-          <th>Salary</th>
-          <th>DOB</th>
+          <th><b>Id</b></th>
+          <th><b>Firstname</b></th>
+          <th><b>Lastname</b></th>
+          <th><b>Age</b></th>
+          <th><b>Salary</b></th>
+          <th><b>DOB</b></th>
         </tr>
-        <tr ng-repeat="x in names">
+        <tr ng-repeat="x in datalist">
+          <td>{{x.id}}</td>
           <td>{{x.firstName}}</td>
           <td>{{x.lastName}}</td>
           <td>{{x.age}}</td>
