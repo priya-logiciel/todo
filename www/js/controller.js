@@ -1,6 +1,8 @@
 (function(){
 	'use strict';	
 		var DemoCtrl = function($scope,$ionicPopup)  {
+			$scope.dataToShow=''	
+
 			$scope.datalist = [
 				
 				{
@@ -49,14 +51,25 @@
 					age: '29',
 				},
 			]
-			$scope.dataToShow=''
-            
-			$scope.showDataInPopup = function(){
-				console.log ($scope.dataToShow)
-			}
-
+			$scope.showPopup = function() {
 				
-			}  
+				$scope.data=$scope.datalist.find(function(e) {
+					return e.id == $scope.dataToShow
+				})
+				console.log($scope.data)
+				var myPopup = $ionicPopup.show({
+					title:"User Detaile",
+					templatesUrl:"templates/showDatapopup.html",
+					scope: $scope,
+					buttons: [
+						{ text: 'Cancel' },
+					]
+				});     
+			    
+		   }
+		}
+			
+				
 			DemoCtrl.$inject = ['$scope','$ionicPopup' ]
 			angular
 				.module('starter')
