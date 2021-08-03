@@ -56,20 +56,34 @@
 				$scope.data=$scope.datalist.find(function(e) {
 					return e.id == $scope.dataToShow
 				})
-				console.log($scope.data)
-				var myPopup = $ionicPopup.show({
-					title:"User Detaile",
-					templatesUrl:"templates/showDatapopup.html",
-					scope: $scope,
-					buttons: [
-						{ text: 'Cancel' },
-					]
-				});     
-			    
-		   }
-		}
-			
 				
+				console.log($scope.data)
+				$ionicPopup.show({
+					title:"User Detaile",
+					templateUrl:"templates/showDatapopup.html",
+					scope: $scope,
+					buttons:  [
+					  { text: 'Cancel' },
+				    ]
+				});  
+					
+			}
+			 //DELETE FUNCTION
+			$scope.deleteData = function (item){		
+				var dataToDelete;
+				$scope.datalist.forEach(function(p, index){
+					if(p.id == $scope.dataToShow){
+					  dataToDelete = index;
+					}
+				});
+				console.log(dataToDelete)
+				$scope.datalist.splice(dataToDelete, 1);
+			}
+				
+		}	       
+		
+	
+	
 			DemoCtrl.$inject = ['$scope','$ionicPopup' ]
 			angular
 				.module('starter')

@@ -78,7 +78,11 @@
     <div ng-app="starter" ng-controller="MainCtrl" class="border_div">
       <input ng-model="dataToShow" />
       <button class="myClass" on-tap="showPopup()">Show Popup</button>
-      <button class="myClass" on-tap="showdelete()">Delete</button>
+     <!--delete data-->
+     <button type="button" 
+      class="delete" 
+      ng-click="deleteData()" 
+      ng-show="!inactive">Delete</button> 
       <table style= "width:100%">
         <tr>
           <th><b>Id</b></th>
